@@ -1,0 +1,37 @@
+{% extends 'wrapper.html' %}
+
+{% block title %} Контакты {% endblock %}
+
+{% load static %}
+
+{% block css_js %}
+<link href="{% static 'contact/contact.css' %}" rel="stylesheet">
+<script src="{% static 'contact/contact.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-5 mb-4">
+        <h2>Контакты</h2>
+        <p><i class="bi bi-geo-alt-fill text-success"></i> Москва, ул. Зелёная, д. 10, ТЦ «Растения»</p>
+        <p><i class="bi bi-telephone-fill text-success"></i> +7 (495) 123-45-67</p>
+        <p><i class="bi bi-envelope-fill text-success"></i> info@plantstore.ru</p>
+        <p><i class="bi bi-clock-fill text-success"></i> Ежедневно 10:00–21:00</p>
+    </div>
+    <div class="col-md-7">
+        <h2>Напишите нам</h2>
+        <form action="#" method="post">
+            <div class="mb-2">
+                <input type="text" class="form-control name" placeholder="Ваше имя" required>
+            </div>
+            <div class="mb-2">
+                <input type="email" class="form-control email" placeholder="Email" required>
+            </div>
+            <div class="mb-2">
+                <textarea class="form-control message" rows="3" placeholder="Сообщение" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Отправить</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

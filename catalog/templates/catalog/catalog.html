@@ -1,0 +1,21 @@
+{% extends 'wrapper.html' %}
+
+{% block title %}Каталог растений{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Каталог растений</h1>
+<div class="row g-4">
+    {% for plant in plants %}
+    <div class="col-md-3">
+        <div class="card h-100 shadow-sm">
+            <img style="height: 450px; object-fit: cover;" src={{MEDIA_URL}}{{plant.image_url}} class="card-img-top" alt="Монстера">
+            <div class="card-body">
+                <h5 class="card-title">{{plant.name}}</h5>
+                <p class="card-text">{{plant.description}}</p>
+                <p class="fw-bold">{{plant.price}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
