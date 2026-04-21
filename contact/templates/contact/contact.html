@@ -20,14 +20,15 @@
     <div class="col-md-7">
         <h2>Напишите нам</h2>
         <form method="post">
+            {% csrf_token %}
             <div class="mb-2">
-                <input type="text" class="form-control name" placeholder="Ваше имя" required>
+                <input name="username" type="text" class="form-control name" placeholder="Ваше имя" required>
             </div>
             <div class="mb-2">
-                <input type="email" class="form-control email" placeholder="Email" required>
+                <input name="email" type="text" class="form-control email" placeholder="Email" required>
             </div>
             <div class="mb-2">
-                <textarea class="form-control message" rows="3" placeholder="Сообщение"></textarea>
+                <textarea name="description" class="form-control message" rows="3" placeholder="Сообщение"></textarea>
             </div>
             <button type="submit" class="submit-btn btn btn-success">Отправить</button>
         </form>
