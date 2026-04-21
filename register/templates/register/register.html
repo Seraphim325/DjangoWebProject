@@ -2,6 +2,12 @@
 
 {% block title %} Регистрация {% endblock %}
 
+{% load static %}
+
+{% block css %}
+<link href="{% static 'validation/validation.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
     <div class="col-md-6 col-lg-5">
@@ -12,11 +18,11 @@
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="username" class="form-label">Имя пользователя</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <input type="text" class="form-control name" id="username" name="username" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control email" id="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="password1" class="form-label">Пароль</label>
@@ -26,7 +32,7 @@
                         <label for="password2" class="form-label">Подтверждение пароля</label>
                         <input type="password" class="form-control" id="password2" name="password2" required>
                     </div>
-                    <button type="submit" class="btn btn-success w-100 py-2 rounded-pill">Зарегистрироваться</button>
+                    <button type="submit" class="submit-btn btn btn-success w-100 py-2 rounded-pill">Зарегистрироваться</button>
                 </form>
                 <div class="text-center mt-4">
                     <p class="mb-0 text-muted">Уже есть аккаунт? <a href="{% url 'login' %}" class="text-decoration-none">Войти</a></p>
@@ -35,4 +41,9 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script type="module" src="{% static 'validation/validation.js' %}"></script>
+<script type="module" src="{%  static 'validation/register/register.js' %}"></script>
 {% endblock %}

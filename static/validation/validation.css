@@ -1,0 +1,10 @@
+
+input:user-invalid:required {
+  background-color: ivory;
+  border: none;
+  outline: 2px solid red;
+}
+
+textarea:optional {
+    opacity: 0.7;
+}

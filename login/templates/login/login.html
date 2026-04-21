@@ -2,6 +2,12 @@
 
 {% block title %} Вход {% endblock %}
 
+{% load static %}
+
+{% block css %}
+<link href="{% static 'validation/validation.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
     <div class="col-md-5 col-lg-4">
@@ -11,14 +17,14 @@
                 <form method="post" action="{% url 'login' %}">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email или имя пользователя</label>
-                        <input type="text" class="form-control" id="email" name="username" required autofocus>
+                        <label for="login" class="form-label">Email или имя пользователя</label>
+                        <input type="text" class="form-control" id="login" required>
                     </div>
                     <div class="mb-4">
                         <label for="password" class="form-label">Пароль</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                     </div>
-                    <button type="submit" class="btn btn-success w-100 py-2 rounded-pill">Войти</button>
+                    <button type="submit" class="submit-btn btn btn-success w-100 py-2 rounded-pill">Войти</button>
                 </form>
                 <div class="text-center mt-4">
                     <p class="mb-0 text-muted">Нет аккаунта? <a href="{% url 'register' %}" class="text-decoration-none">Зарегистрироваться</a></p>
@@ -27,4 +33,8 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script type="module" src="{% static 'validation/validation.js' %}"></script>
 {% endblock %}
