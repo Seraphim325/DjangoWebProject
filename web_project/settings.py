@@ -1,4 +1,5 @@
 from decouple import config
+from django.conf.global_settings import LOGOUT_REDIRECT_URL
 
 """
 Django settings for web_project project.
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'catalog',
     'contact',
     'login',
-    'register'
+    'register',
 ]
 
 MIDDLEWARE = [
@@ -75,16 +76,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'web_project.wsgi.application'
 
+LOGOUT_REDIRECT_URL = 'home'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': config('DATABASE_ENGINE'),
+        'NAME': config('DATABASE_NAME'),
+        'USER': config('DATABASE_USERNAME'),
+        'PASSWORD': config('DATABASE_PASSWORD'),
+        'HOST': config('DATABASE_HOST'),
+        'PORT': config('DATABASE_PORT'),
     }
 }
+
 
 
 # Password validation

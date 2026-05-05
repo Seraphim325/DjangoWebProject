@@ -16,6 +16,11 @@
 
 </head>
 <body class="d-flex flex-column min-vh-100">
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
     <header class="bg-dark py-3">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
@@ -24,19 +29,26 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'catalog' %}">Каталог</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Контакты</a></li>
+                    </ul>
+
                     <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">Главная</a>
+                            <form action="{% url 'logout' %}" method="post" class="d-flex align-items-center gap-2 my-0">
+                                {% csrf_token %}
+                                <span class="navbar-text mb-0">{{ user.username }} / {{ user.email }}</span>
+                                <button class="btn btn-outline-danger btn-sm" type="submit">Выйти</button>
+                            </form>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'catalog' %}">Каталог</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contact' %}">Контакты</a>
-                        </li>
+                        {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">Авторизация/Регистрация</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

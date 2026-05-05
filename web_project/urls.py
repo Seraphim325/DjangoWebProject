@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import path, include
 
 from web_project import settings
@@ -26,7 +27,8 @@ urlpatterns = [
     path('contact/', include('contact.urls')),
     path('catalog/', include('catalog.urls')),
     path('login/', include('login.urls')),
-    path('register/', include('register.urls'))
+    path('register/', include('register.urls')),
+    path('logout/', auth_views.LogoutView.as_view(), name="logout")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
